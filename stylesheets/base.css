@@ -1,0 +1,51 @@
+/* Header View */
+#headerView {
+    background-color: #FFA319;
+    padding: 10px 10px 10px 10px;
+}
+.header-title {
+    font-weight: bold;
+    font-size: 28pt;
+}
+.header-subtitle {
+    padding-left: 10px;
+    font-size: 14pt;
+    font-style: italic;
+}
+
+/* Go Back Title View */
+#goBackTitleView {
+    padding: 5px 0px 5px 0px;
+    background-color: #ffea6f;
+}
+#dinner-summary {
+    font-size: 18pt;
+    padding-left: 50px;
+}
+#goBackButton {
+    background-color: #FFA319;
+    margin-top: 4px;
+}
+
+/* Dishes Overview */
+#dinnerOverview {
+    padding-top: 50px;
+}
+.dish {
+    border: 1px solid black;
+    width: 144px;
+}
+.dish > img {
+    padding: 1px;
+    border-bottom: 1px solid black;
+    clip: rect(0px, 148px, 148px, 0px);
+}
+.dish > span {
+    font-weight: bold;
+}
+#printButton {
+    background-color: #FFA319;
+    margin-top: 30px;
+    margin-left: 40%;
+    padding: 7px 30px 7px 30px;
+}

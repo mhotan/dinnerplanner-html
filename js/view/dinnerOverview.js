@@ -10,23 +10,28 @@ var DinnerOverviewView = function(container, model) {
 
     this.totalCost = container.find("#totalCost");
 
+    this.printButton = container.find("#printButton");
+
+    //Set the inital values of the components
+
     <!-- starter dish -->
     var starter = model.getDish(model.getSelectedDish('starter'));
     if (typeof starter == 'undefined') {
         $(starterDish).hide();
     } else {
-        var starterImage = $("<img>");
-        starterImage.attr("src", "images/" + starter.image);
+        this.starterImage = $("<img>");
+        this.starterImage.attr("src", "images/" + starter.image);
 
-        var starterName = $("<span>");
-        starterName.html(starter.name);
+        this.starterName = $("<span>");
+        this.starterName.html(starter.name);
 
-        var starterPrice = $("<span>");
-        starterPrice.html("TODO" + " SEK");
+        this.starterPrice = $("<span>");
+        // TODO: price = costs for dish * number of guests
+        this.starterPrice.html("TODO" + " SEK");
 
-        this.starterDish.append(starterImage);
-        this.starterDish.append(starterName);
-        this.starterDish.parent().append(starterPrice);
+        this.starterDish.append(this.starterImage);
+        this.starterDish.append(this.starterName);
+        this.starterDish.parent().append(this.starterPrice);
     }
 
     <!-- main dish -->
@@ -34,18 +39,18 @@ var DinnerOverviewView = function(container, model) {
     if (typeof maindish == 'undefined') {
         $(mainDish).hide();
     } else {
-        var mainImage = $("<img>");
-        mainImage.attr("src", "images/" + maindish.image);
+        this.mainImage = $("<img>");
+        this.mainImage.attr("src", "images/" + maindish.image);
 
-        var mainName = $("<span>")
-        mainName.html(maindish.name);
+        this.mainName = $("<span>")
+        this.mainName.html(maindish.name);
 
-        var mainPrice = $("<span>");
-        mainPrice.html("TODO" + " SEK");
+        this.mainPrice = $("<span>");
+        this.mainPrice.html("TODO" + " SEK");
 
-        this.mainDish.append(mainImage);
-        this.mainDish.append(mainName);
-        this.mainDish.parent().append(mainPrice);
+        this.mainDish.append(this.mainImage);
+        this.mainDish.append(this.mainName);
+        this.mainDish.parent().append(this.mainPrice);
     }
 
     <!-- dessert dish -->
@@ -53,24 +58,63 @@ var DinnerOverviewView = function(container, model) {
     if (typeof dessert == 'undefined') {
         $(dessertDish).hide();
     } else {
-        var dessertImage = $("<img>");
-        dessertImage.attr("src", "images/" + dessert.image);
+        this.dessertImage = $("<img>");
+        this.dessertImage.attr("src", "images/" + dessert.image);
 
-        var dessertName = $("<span>");
-        dessertName.html(dessert.name);
+        this.dessertName = $("<span>");
+        this.dessertName.html(dessert.name);
 
-        var dessertPrice = $("<span>");
-        dessertPrice.html("TODO" + " SEK");
+        this.dessertPrice = $("<span>");
+        this.dessertPrice.html("TODO" + " SEK");
 
-        this.dessertDish.append(dessertImage);
-        this.dessertDish.append(dessertName);
-        this.dessertDish.parent().append(dessertPrice);
+        this.dessertDish.append(this.dessertImage);
+        this.dessertDish.append(this.dessertName);
+        this.dessertDish.parent().append(this.dessertPrice);
     }
 
-    <!-- total menu cost -->
     this.totalCost.html(model.getTotalMenuPrice() + " SEK");
 
-    <!-- print button -->
-    this.printButton = container.find("#printButton");
+    /*****************************************
+     Observer implementation
+     *****************************************/
+
+    //Register an observer to the model
+    model.addObserver(this);
+
+    //This function gets called when there is a change at the model
+    this.update = function(arg){
+
+        <!-- starter dish -->
+        var starter = model.getDish(model.getSelectedDish('starter'));
+        if (typeof starter == 'undefined') {
+            $(starterDish).hide();
+        } else {
+            this.starterImage.attr("src", "images/" + starter.image);
+            this.starterName.html(starter.name);
+            this.starterPrice.html("TODO" + " SEK");
+        }
+
+        <!-- main dish -->
+        var maindish = model.getDish(model.getSelectedDish('main dish'));
+        if (typeof maindish == 'undefined') {
+            $(mainDish).hide();
+        } else {
+            this.mainImage.attr("src", "images/" + maindish.image);
+            this.mainName.html(maindish.name);
+            this.mainPrice.html("TODO" + " SEK");
+        }
+
+        <!-- dessert dish -->
+        var dessert = model.getDish(model.getSelectedDish('dessert'));
+        if (typeof dessert == 'undefined') {
+            $(dessertDish).hide();
+        } else {
+            this.dessertImage.attr("src", "images/" + dessert.image);
+            this.dessertName.html(dessert.name);
+            this.dessertPrice.html("TODO" + " SEK");
+        }
+
+        this.totalCost(model.getTotalMenuPrice() + " SEK");
+    }
 
 }

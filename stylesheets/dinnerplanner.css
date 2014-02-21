@@ -16,7 +16,7 @@
 /* Go Back Title View */
 #goBackTitleView {
     padding: 5px 0px 5px 0px;
-    background-color: #ffea6f;
+    background-color: #FFEA6F;
 }
 #dinner-summary {
     font-size: 18pt;
@@ -24,7 +24,6 @@
 }
 #goBackButton {
     background-color: #FFA319;
-    margin-top: 4px;
 }
 
 /* Dishes Overview */
@@ -38,14 +37,22 @@
 .dish > img {
     padding: 1px;
     border-bottom: 1px solid black;
-    clip: rect(0px, 148px, 148px, 0px);
+    /* the image is currently just stretched to 142x142 */
+    min-width: 142px;
+    min-height: 142px;
+    max-width: 142px;
+    max-height: 142px;
 }
 .dish > span {
     font-weight: bold;
 }
+
+#buttonContainer {
+    border-top: 1pt solid black;
+    margin-top: 20px;
+}
 #printButton {
     background-color: #FFA319;
-    margin-top: 30px;
-    margin-left: 40%;
+    margin-top: 20px;
     padding: 7px 30px 7px 30px;
 }

@@ -12,9 +12,9 @@ $(function() {
     //We instantiate our model
     var model = new DinnerModel();
 
-    //And create the needed controllers and views
-    var exampleView = new ExampleView($("#exampleView"),model);
-    var exampleViewController = new ExampleViewController(exampleView,model);
+    var introView = new IntroView($('#intro-pane'), model);
+    var introController = new IntroController(introView, model);
+    introController.addListener(this);
 
     var menuOptionsView = new MenuOptionsView($('#menu-options-view'), model);
     var menuOptionsController = new MenuOptionsController(menuOptionsView, model);
@@ -26,8 +26,6 @@ $(function() {
 
 //    var dinnerOverview = new DinnerOverviewView($("#dinnerOverview"), model);
 //    var dinnerOverviewController = new DinnerOverviewViewController(dinnerOverview, model);
-
-
 
     // groups of views.
     var headerGroup = ['#summary-header-pane'];
@@ -59,15 +57,12 @@ $(function() {
     // Call this when the user selects to proceed pas the intro screen.
     var proceedAfterIntro = function() {
         // Hide the intro view and proceed to the next screen.
+        $('.container').css('background-image', 'none');
         showFromMainGroup('#split-pane');
         showFromRightGroup('#menu-options-view');
         showFromLeftGroup('#current-menu-pane');
         showFromHeaderGroup('');
     }
-
-    $('#intro-pane').on('click', 'button', function() {
-        proceedAfterIntro();
-    });
 
     //////////////////////////////////////////////////////////////////////////////////////////
     // Call backs from other controllers
@@ -90,6 +85,13 @@ $(function() {
         console.log('Print menu requested.');
         showFromMainGroup('#preparation-pane');
     }
+
+    this.proceedPastIntro = function() {
+        console.log('Intro page complete.');
+        proceedAfterIntro();
+    }
+
+
 
    showIntro();
 });

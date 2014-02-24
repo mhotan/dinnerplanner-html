@@ -1,10 +1,7 @@
 var CurrentMenuView = function(container,model){
-    window.alert("enter view");
 
     this.myButton = container.find("#testbutton");
     this.numberOfGuests = container.find("#numberOfGuest");
-    this.startButton = container.find("#startButton");
-
 
     //Register an observer to the model
     model.addObserver(this);
@@ -14,5 +11,4 @@ var CurrentMenuView = function(container,model){
         this.numberOfGuests.html(model.getNumberOfGuests());
     }
 
-    window.alert("exit view");
 }

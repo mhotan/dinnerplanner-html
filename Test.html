@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <div class="row clearfix">
+    <div id="main-pane" class="row clearfix">
 
         <!-- dinner overview -->
         <div id="dinnerOverview">
@@ -56,7 +56,7 @@
                 <div class="col-md-3" style="border-left: 1px solid black;">
                     Total:
                     <br>
-                    <span id="totalCost">x.yz SEK</span>
+                    <span id="totalCost2">x.yz SEK</span>
                 </div>
             </div>
 
@@ -66,11 +66,17 @@
 
         </div>
 
-        <div id="intro-pane">
+        <div id="intro-pane" class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
 
-            <!--TODO : The introduction view goes here-->
-            <h3>Intro View goes here</h3>
-            <button class="btn btn-default btn-primary">Proceed</button>
+            <h1>A Home Dinner Service</h1>
+            <hr noshade>
+            <div id="welcomeView">
+                <p></p>
+                <ul class="list-unstyled">
+                    <li><strong>Start Quickly</strong></li>
+                    <li><button id="startButton" type="submit" class="btn btn-warning">Create New Dinner</button></li>
+                </ul>
+            </div>
 
         </div>
 
@@ -89,7 +95,32 @@
 
                 <!-- The Current Menu View will go here. -->
                 <div id="current-menu-pane">
+                    <h2>My Dinner</h2>
+                    <div class="row">
+                        <span class="col-md-6 col-lg-6 col-sm-6 col-xs-12">Number of People: </span>
+                        <input id="numberOfGuest" class="col-md-6 col-lg-6 col-sm-6 col-xs-12"
+                               type="number" name="quantity" min="1" max="100">
+                    </div>
 
+                    <div id="table-header" class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Dish Name</div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Cost</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">Pending</div>
+                        <div class="col-md-6">0.00</div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div id="totalCost" class="col-md-3 col-md-offset-2"><span id="totalPrice">SEK</span></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-1">
+                            <button id="testbutton" type="submit" class="btn btn-default">Confirm Dinner</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -173,11 +204,13 @@
 <script src="js/view/SummaryView.js"></script>
 <script src="js/view/MenuOptionsView.js"></script>
 <script src="js/view/exampleView.js"></script>
+<script src="js/view/IntroView.js"></script>
 <script src="js/controller/MenuOptionsController.js"></script>
 <script src="js/controller/exampleViewController.js"></script>
 <script src="js/controller/dinnerOverviewController.js"></script>
 <script src="js/controller/DishPortfolioController.js"></script>
 <script src="js/controller/SummaryController.js"></script>
+<script src="js/controller/IntroController.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

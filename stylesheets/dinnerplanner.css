@@ -1,6 +1,6 @@
 /* Header View */
-#headerView {
-    background-color: #FFA319;
+#header-pane {
+    background-color: rgba(255, 163, 25, 0.50);
     padding: 10px 10px 10px 10px;
 }
 .header-title {
@@ -14,7 +14,7 @@
 }
 
 /* Go Back Title View */
-#goBackTitleView {
+#summary-header-pane {
     padding: 5px 0px 5px 0px;
     background-color: #FFEA6F;
 }
@@ -56,3 +56,31 @@
     margin-top: 20px;
     padding: 7px 30px 7px 30px;
 }
+
+#intro-pane {
+    margin-top: 200px;
+    background-color: white;
+}
+
+.container {
+    background-image: url('../images/healthy-cooking-for-the-family.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#current-menu-pane > .row {
+    margin-top: 10px;
+
+}
+
+#current-menu-pane #table-header {
+    font-weight: bold;
+    background-color: #b9bab8;
+    text-align: center;
+    text-justify: auto;
+}
+
+#menu-options-view h4 {
+    margin-top: 20px;
+}
+

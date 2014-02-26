@@ -77,7 +77,6 @@ var MenuOptionsController = function(view, model) {
     // This view
     this.dishSelected = function(dish) {
         // notify the listener for all.
-
         notifyListeners(dish);
     }
 

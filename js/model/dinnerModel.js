@@ -110,6 +110,16 @@ var DinnerModel = function() {
         }
     }
 
+    // Calculate the total cost of the dish excluding number of guests.
+    this.getDishPrice = function (id) {
+        var dish = this.getDish(id);
+        var sum = 0.;
+        $.each(dish.ingredients, function(index, ingredient) {
+            sum += ingredient.price;
+        });
+        return sum;
+    }
+
 
     // the dishes variable contains an array of all the
     // dishes in the database. each dish has id, name, type,

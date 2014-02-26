@@ -25,11 +25,13 @@ var DishController = function(view, dish, model) {
         }
     }
 
-    view.backButton.on('click', function() {
+    view.backButton.on('click', function(event) {
+        event.preventDefault();
         notifyBackPressed()
     });
 
-    view.confirmButton.on('click', function() {
+    view.confirmButton.on('click', function(event) {
+        event.preventDefault();
         model.addDishToMenu(dish.id);
         notifyBackPressed();
     });

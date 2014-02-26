@@ -10,6 +10,7 @@ var DishView = function(container, dish, model) {
     var details = container.find('#details');
     var tableRows = container.find('tbody');
     var preparation = container.find('#preparation');
+    var dishPrice = container.find('#dish-total');
 
     // Back to select dish button
     this.backButton = container.find('#back-button');
@@ -38,17 +39,17 @@ var DishView = function(container, dish, model) {
             var row = $('<tr>');
 
             var qtyCell = $('<td>');
-            qtyCell.addClass('qty');
+            qtyCell.addClass('quantity');
             qtyCell.text((ingredient.quantity * numGuests) + ingredient.unit);
             qtyCell.appendTo(row);
 
             var nameCell = $('<td>');
-            nameCell.addClass('name');
+            nameCell.addClass('name_ingredient');
             nameCell.text(ingredient.name);
             nameCell.appendTo(row);
 
             var costCell = $('<td>');
-            costCell.addClass('cost');
+            costCell.addClass('price');
             costCell.text(ingredient.price * numGuests);
             costCell.appendTo(row);
 
@@ -57,6 +58,9 @@ var DishView = function(container, dish, model) {
 
         // Update the preparations block.
         preparation.text(dish.description);
+
+        // Set the total price of the dish.
+        dishPrice.text(formatCurrency(model.getDishPrice(dish.id) * numGuests));
     }
 
     // Update the view

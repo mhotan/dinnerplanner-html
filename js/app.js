@@ -32,6 +32,8 @@ $(function() {
     var dinnerController = new DinnerOverviewController(dinnerOverView, model);
     dinnerController.addListener(this);
 
+    var preparationView = new PreparationView($('#preparation-pane'), model);
+
     var dishView;
     var dishController;
 
@@ -41,14 +43,6 @@ $(function() {
         '#preparation-pane', '#split-pane'];
     var leftGroup = ['#current-menu-pane'];
     var rightGroup = ['#dish-pane', '#menu-options-view'];
-
-    var showFromGroup = function(view, showOrHide, viewGroup) {
-        for (var v in viewGroup) {
-            // Only show the view if
-            // the input view is found and showOrHide is set to true.
-            $(v).toggle(view == v && showOrHide);
-        }
-    }
 
     // Functions that handle showing views.
     var showFromHeaderGroup = showInGroup(headerGroup);
@@ -86,12 +80,6 @@ $(function() {
         dishController.addListener(this);
     }
 
-    // Summary View Controller
-    this.backToEditMenu = function() {
-        console.log('Back to edit dinner requested');
-
-    }
-
     // Summary view controller.
     this.printMenu = function() {
         console.log('Print menu requested.');
@@ -118,20 +106,20 @@ $(function() {
     }
 
     this.printMenu = function() {
-        showFromMainGroup('#dinnerOverview');
+        showFromMainGroup('#preparation-pane');
     }
 
    showIntro();
 });
 
-// A function that
+// A function that returns a function that will show.
 function showInGroup(viewGroup) {
     var group = viewGroup;
     function showOrHide(view) {
         for (var i = 0; i < group.length; i++) {
             // Only show the view if
-            // the input view is found and showOrHide is set to true.
-            $(group[i]).toggle(view == group[i]);
+            // the input view is found
+            $(group[i]).toggle(view == group[i]); // Show = toggle(true) Hide = toggle(false)
         }
     }
     return showOrHide;

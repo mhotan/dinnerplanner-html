@@ -8,4 +8,5 @@ var CurrentMenuViewController = function(view, model ) {
     view.numberOfGuests.change(function(){
         window.alert("input changed: ");
     });
-}
+
+};                                                                                                                                                               S

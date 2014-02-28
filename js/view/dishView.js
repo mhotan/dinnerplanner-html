@@ -40,7 +40,7 @@ var DishView = function(container, dish, model) {
 
             var qtyCell = $('<td>');
             qtyCell.addClass('quantity');
-            qtyCell.text((ingredient.quantity * numGuests) + ingredient.unit);
+            qtyCell.text(Math.round(ingredient.quantity * numGuests).toFixed(2) + ingredient.unit);
             qtyCell.appendTo(row);
 
             var nameCell = $('<td>');
@@ -50,7 +50,7 @@ var DishView = function(container, dish, model) {
 
             var costCell = $('<td>');
             costCell.addClass('price');
-            costCell.text(ingredient.price * numGuests);
+            costCell.text(formatCurrency(ingredient.price * numGuests));
             costCell.appendTo(row);
 
             row.appendTo(tableRows);
